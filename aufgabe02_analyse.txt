@@ -1,0 +1,69 @@
+• Welche URL wird aufgerufen wenn Sie versuchen sich anzumelden?
+=> http://localhost/webdev-project-bunnychase/login
+
+
+• Welche „Method“ wird im Reiter Networkangezeigt?
+=> GET
+
+
+• Welche URL wird aufgerufen wenn Sie versuchen sich zu registrieren?
+=> http://localhost/webdev-project-bunnychase/login
+
+
+• Welche „Method“ wird im Reiter Networkangezeigt?
+=> POST
+
+
+• Versuchen Sie einen Nutzer mit dem Namen test zu registrieren –wie ist der Response?
+	 (Chrome Entwicklertools: Network -> klick bei Name auf login -> Response)
+=> name=test2&pwd=12345678&pwd2=12345678&action=register
+-> name: test2
+   pwd: 12345678
+   pwd2: 12345678
+   action: register
+
+
+• Melden Sie sich an: 
+	- Benutzername: test
+	- Passwort: testpassword
+
+• Legen Sie eine Neue Adresse an –wie ist hier die Method? Wie lautet der Name/
+	aufgerufene URL?
+=> http://localhost/webdev-project-bunnychase/api/address
+Method: POST
+
+
+• Bearbeiten Sie eine Adresse und klicken Sie auf speichern –wie ist hier die Method?
+	(evtl. Haken bei „Preserve log“ setzen)Wie lautet hier der Name/aufgerufene URL?
+=> http://localhost/webdev-project-bunnychase/api/address
+Method: PUT
+
+
+• Löschen Sie die neu angelegte Adresse –wie ist hier die Method? Wie lautet hier der 
+	Name/aufgerufene URL?
+=> DELETE
+
+
+• Probieren Sie einmal eine eigene Route anzulegen. Beispielsweise, dass Sie eine 
+	zusätzliche url für den Login definieren (z.B. /anmelden) 
+	–der LoginController soll aber weiterhin verwendet werden.
+	Dies können Sie in der Datei in-cludes/routes.php vornehmen.
+	Rufen Sie anschließend die URL auf. Z.B::
+=> $route['/anmelden'] = array('controller' => 'LoginController', 'uniqueName' => 'login')
+
+
+• Sehen Sie sichmal ein paar Views in dem Ordner includes/views an. Werfen Sie 
+	insbesondere einen Blick auf die Datei includes/views/parts/header.php
+=> header.php beinhaltet den header mit der Überschrift "Addressverwaltung" und 
+	den Button für Login bzw. Logout
+-> header.php wird einmal geschrieben und dann in allen anderen views importiert. 
+Somit muss man beim Entwickeln nicht für jede Seite einen eigenen Header schreiben, 
+sondern immer auf den gleichen header verweisen.
+	Vorteil: bei änderungen muss ich nur die header.php Datei bearbeiten.
+
+
+• Versuchen Sie nachzuvollziehen wie der View die Daten erhält. Offenbar wird im 
+	Controller mittels $this->view->variablenname = "wert“; ein Wert gesetzt. 
+	Auf diesen kanndann im view selbst mit $this->variablenname zugegriffen werden.
+=> mit $this werden Variablen vom Controller an die View weitergegeben
+-> somit kann die View auf den derzeitigen User oder die vorhandenen Addressen zugreifen.
